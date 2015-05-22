@@ -26,3 +26,19 @@
   </div>
 <% end %>
 
+<h3 class="answers_title">
+  <%= @question.answers.count %> Answers
+</h3>
+ 
+<div id="answers">
+  <%= render :partial => @question.answers %>
+</div>
+<%= simple_form_for [@question, Answer.new] do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add Answer", class: "btn btn-primary" %>
+<% end %>
+
+
