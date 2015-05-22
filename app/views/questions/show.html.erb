@@ -1,9 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @question.question %></h1><h3>Submitted by <%= @question.user.email %></h3>
+</div>
 
-<p>
-  <strong>Question:</strong>
-  <%= @question.question %>
-</p>
+<!--<div class="btn-group">
+  <%= link_to 'Visit URL', @question.question, class: "btn btn-primary" %>
+</div>  -->
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<div class="btn-group pull-right">
+  <%= link_to like_question_path(@question), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
+    Upvote
+    <%= @question.get_upvotes.size %>
+  <% end %>
+  <%= link_to dislike_question_path(@question), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-down">
+    Downvote
+    <%= @question.get_downvotes.size %>
+  <% end %>
+</div>
+
+<% if @question.user == current_user -%>
+  <div class="btn-group">
+    <%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %>
+    <%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+  </div>
+<% end %>
+
