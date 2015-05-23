@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+ <% if current_user %>
+    <%= auto_session_timeout_js frequency: 15 %>
+ <% end %>
  <% if user_signed_in? %>
   <ul>
   	<li><%= link_to 'Submit Question',new_question_path %></li>
