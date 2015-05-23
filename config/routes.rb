@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     resources :answers
   end    
 
+  resources :answers do
+    member do
+      put "like", to: "answers#upvote"
+      put "dislike", to: "answers#downvote"
+    end
+  end
 
 root to: "questions#index"
 

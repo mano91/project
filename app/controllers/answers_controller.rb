@@ -3,9 +3,12 @@ class AnswersController < ApplicationController
   before_filter :authenticate_user!
 
   def create
+       
+     
     @question = Question.find(params[:question_id])
     @answer = @question.answers.new(answer_params)
     @answer.user = current_user
+
 
     respond_to do |format|
       if @answer.save
@@ -26,6 +29,19 @@ class AnswersController < ApplicationController
       format.html { redirect_to :back, notice: 'Answer was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+   
+  def upvote
+    @answer = Answer.find(params[:id])
+    @answer.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @answer = Answer.find(params[:id])
+    @answer.downvote_by current_user
+    redirect_to :back
   end
 
   private
