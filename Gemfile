@@ -14,12 +14,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'devise', '~> 3.4.1'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'simple_form', '~> 3.1.0'
+#gem 'omniauth', '~> 1.2.2'
+ 
 
-
-group :development do
- gem 'sqlite3'
+group :development do 
+  gem 'sqlite3'
 end
+
 
 group :production do
  gem 'pg'
-end
+end 
