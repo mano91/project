@@ -2,21 +2,21 @@
   <h1><%= @question.question %></h1><h3>Submitted by <%= @question.user.email %></h3>
 </div>
 
-<!--<div class="btn-group">
-  <%= link_to 'Visit URL', @question.question, class: "btn btn-primary" %>
-</div>  -->
 
 
-  <%= link_to like_question_path(@question), method: :put do %>
+<div class="btn-group pull-left">
+  <%= link_to like_question_path(@question), method: :put,class: "btn btn-default btn-sm" do %>
+  <span class="glyphicon glyphicon-chevron-up"></span>
     Upvote
     <%= @question.get_upvotes.size %>
   <% end %>
 
-  <%= link_to dislike_question_path(@question), method: :put do %>
+  <%= link_to dislike_question_path(@question), method: :put,class: "btn btn-default btn-sm" do %>
+  <span class="glyphicon glyphicon-chevron-down"></span>
     Downvote
     <%= @question.get_downvotes.size %>
   <% end %>
-
+</div>
 
 <% if @question.user == current_user -%>
  
@@ -25,9 +25,9 @@
  
 <% end %>
 
-<h2 class="answers_title">
+<h3 class="answers_title">
   <%= @question.answers.count %> Answers
-</h2>
+</h3>
  
 <div id="answers">
   <%= render :partial => @question.answers %>
