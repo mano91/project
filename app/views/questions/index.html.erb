@@ -13,7 +13,7 @@
          <%= question.get_upvotes.size %>
         <% end %>
         <%= link_to dislike_question_path(question), method: :put,class: "btn btn-default btn-sm" do %>
-         <span class="glyphicon glyphicon-chevron-up"></span>
+         <span class="glyphicon glyphicon-chevron-down"></span>
            Downvote
          <%= question.get_downvotes.size %>
         <% end %>   
